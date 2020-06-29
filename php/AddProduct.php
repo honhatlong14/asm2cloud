@@ -100,7 +100,7 @@
                         <td scope="row"><?php echo $row['product_id'] ?></td>
                         <td><?php echo $row['product_name'] ?></td>
                         <td><?php echo $row['price'] ?></td>
-                        <td><?php echo $row['productimage'] ?></td>
+                        <td><?php echo $row['product_image'] ?></td>
                         <td><?php echo $row['information'] ?></td>
                     </tr>
 
