@@ -39,23 +39,14 @@
                     </div>
                     <div class="form-group">
                         <label for="note" class="col-form-label">Description</label>
-                        <textarea name="description" id="" rows="5" class="form-control" id="description" placeholder="Description"></textarea>
+                        <textarea name="description" rows="5" class="form-control" id="description" placeholder="Description"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success" name="submit"><i class="fa fa-check-circle"></i> Save</button>
                 </form>
             </div>
         </div>
         <br><br><br>
-        <?php
-        require_once'ConnecttoDB.php';
-        $connection = new Connection();
-        $sql = "SELECT * FROM product";
-        $stmt = $connect->prepare($sql);
-//Thiết lập kiểu dữ liệu trả về
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->execute();
-        $resultSet = $stmt->fetchAll();
-        ?>
+
         <?php
         if (isset($_POST['submit'])) {
             $fnm = $_FILES["image"]["name"];
@@ -64,9 +55,11 @@
         }
         ?>
         <?php
-        $sql = "INSERT INTO product(product_id,product_nme,price,product_image,information)"
+        require_once'ConnecttoDB.php';
+        $connection = new Connection();
+        $sql = "INSERT INTO product(product_id,product_name,price,product_image,information)"
                 . " VALUES('$_POST[barcode]','$_POST[name]','$_POST[price]','$_POST[image]','$_POST[description]')";
-        $stmt = $connect->prepare($sql);
+        $stmt = $connection->prepare($sql);
 //$stmt->execute();
         if (is_null($_POST[barcode])) {
             echo "ID must be not null";
@@ -89,10 +82,17 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                // tạo vòng lặp 
-                foreach ($resultSet as $row) {
-                    ?>
+<?php
+// tạo vòng lặp 
+$sql = "SELECT * FROM product ORDER BY product_id";
+$stmt = $pdo->prepare($sql);
+//Thiết lập kiểu dữ liệu trả về
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
+$stmt->execute();
+$resultSet = $stmt->fetchAll();
+echo '<p>Students information:</p>';
+foreach ($resultSet as $row) {
+    ?>
 
                     <tr>
                         <td scope="row"><?php echo $row['ProductID'] ?></td>
@@ -102,9 +102,9 @@
                         <td><?php echo $row['Information'] ?></td>
                     </tr>
 
-                    <?php
-                }
-                ?>
+    <?php
+}
+?>
             </tbody>
         </table>
     </body>
