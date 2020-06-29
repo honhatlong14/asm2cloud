@@ -64,7 +64,7 @@
         }
         ?>
         <?php
-        $sql = "INSERT INTO product(ProductID,ProductName,Price,ProductImg,Information)"
+        $sql = "INSERT INTO product(product_id,product_nme,price,product_image,information)"
                 . " VALUES('$_POST[barcode]','$_POST[name]','$_POST[price]','$_POST[image]','$_POST[description]')";
         $stmt = $connect->prepare($sql);
 //$stmt->execute();
