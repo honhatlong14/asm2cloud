@@ -59,7 +59,7 @@
         $connection = new Connection();
         $sql = "INSERT INTO product(product_id,product_name,price,product_image,information)"
                 . " VALUES('$_POST[barcode]','$_POST[name]','$_POST[price]','$_POST[image]','$_POST[description]')";
-        $stmt = $connection->prepare($sql);
+        $stmt = $connection->pdo->prepare($sql);
 //$stmt->execute();
         if (is_null($_POST[barcode])) {
             echo "ID must be not null";
@@ -82,29 +82,31 @@
                 </tr>
             </thead>
             <tbody>
-<?php
-// tạo vòng lặp 
-$sql = "SELECT * FROM product ORDER BY product_id";
-$stmt = $pdo->prepare($sql);
+                <?php
+// tạo vòng lặp
+                require_once'ConnecttoDB.php';
+                $connection = new Connection();
+                $sql = "SELECT * FROM product ORDER BY product_id";
+                $stmt = $connection->pdo->prepare($sql);
 //Thiết lập kiểu dữ liệu trả về
-$stmt->setFetchMode(PDO::FETCH_ASSOC);
-$stmt->execute();
-$resultSet = $stmt->fetchAll();
-echo '<p>Students information:</p>';
-foreach ($resultSet as $row) {
-    ?>
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                $stmt->execute();
+                $resultSet = $stmt->fetchAll();
+                echo '<p>Students information:</p>';
+                foreach ($resultSet as $row) {
+                    ?>
 
                     <tr>
-                        <td scope="row"><?php echo $row['ProductID'] ?></td>
-                        <td><?php echo $row['ProductName'] ?></td>
-                        <td><?php echo $row['Price'] ?></td>
-                        <td><?php echo $row['ProductImg'] ?></td>
-                        <td><?php echo $row['Information'] ?></td>
+                        <td scope="row"><?php echo $row['product_id'] ?></td>
+                        <td><?php echo $row['product_name'] ?></td>
+                        <td><?php echo $row['price'] ?></td>
+                        <td><?php echo $row['productimage'] ?></td>
+                        <td><?php echo $row['information'] ?></td>
                     </tr>
 
-    <?php
-}
-?>
+                    <?php
+                }
+                ?>
             </tbody>
         </table>
     </body>
