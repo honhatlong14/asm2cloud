@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #f1f3f4;
+    font-family: sans-serif;
+}
+.top-nav-bar{
+    height: 150px;
+    top:0;
+    position: sticky;
+    background: #fff;
+    margin-bottom: 20px;
+    border-bottom: 3px solid blue;
+    z-index: 2;
+    background-color: lightblue;
+}
+.logo{
+    width: 250px;
+    height: 120px;
+    margin-left: 45px;
+    margin-top: 13px;
+    margin-bottom: auto;
+    border: 5px solid blue;
+}
+.menu-bar{
+    width: 40%;
+    height: 57px;
+    float: right;
+}
+.menu-bar ul{
+    display: inline-flex;
+    float: right;
+    margin-top: 30px;
+}
+.menu-bar ul li {
+    border-left: 1px solid #fff;
+    list-style-type: none;
+    width: 150px;
+    padding: 25px 35px;
+    text-align: center;
+    background-color:lightblue;
+    cursor: pointer;
+}
+.menu-bar ul li:hover{
+    background-color: blue;
+}
+.card-img-top{
+    height: 300px;
+    max-width: 100%;
+    background: lightblue;
+    background: radial-gradient(white 30%, lightblue 70%);
+}
+.my-md-0{
+    margin-bottom: 0!important;
+}
+.img-fluid{
+    max-width: 100%;
+    height: 35px;
+    background: lightblue;
+    background: radial-gradient(white 30%, lightblue 70%);
+}
+.menu-bar ul li
+.fa-star,
+.fa-star-half{
+    color:yellowgreen;
+    padding: 3% 0;
+}
+#cart-count{
+    text-align: center;
+    padding-left: 10px;
+    border-radius: 4px solid dark;
+}
+body{
+	margin: 0 auto;
+	background-image: url("img/'Giggle McDimples' Clip - Toy Stroy 4.mp4");
+	background-repeat: no-repeat;
+	background-size: 100% 720px;
+}
+
+.container{
+	width: 500px;
+	height: 450px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: rgba(44, 62, 80,0.7);
+	margin-top: 160px;
+}
+
+.container img{
+	width: 150px;
+	height: 150px;
+	margin-top: -60px;
+}
+
+input[type="text"],input[type="password"]{
+	margin-top: 30px;
+	height: 45px;
+	width: 300px;
+	font-size: 18px;
+	margin-bottom: 20px;
+	background-color: #fff;
+	padding-left: 40px;
+}
+
+.form-input::before{
+	content: "\f007";
+	font-family: "FontAwesome";
+	padding-left: 07px;
+	padding-top: 40px;
+	position: absolute;
+	font-size: 35px;
+	color: #2980b9; 
+}
+
+.form-input:nth-child(2)::before{
+	content: "\f023";
+}
+
+.btn-login{
+	padding: 15px 25px;
+	border: none;
+	background-color: #27ae60;
+	color: #fff;
+}
