@@ -59,6 +59,7 @@
         $connection = new Connection();
         $sql = "INSERT INTO product(product_id,product_name,price,product_image,information)"
                 . " VALUES('$_POST[barcode]','$_POST[name]','$_POST[price]','$_POST[image]','$_POST[description]')";
+        echo ($sql);
         $stmt = $connection->pdo->prepare($sql);
 //$stmt->execute();
         if (is_null($_POST[barcode])) {
