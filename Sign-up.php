@@ -61,7 +61,7 @@ if (isset($_POST['signup'])) {
 // tạo vòng lặp
         require_once'ConnecttoDB.php';
         $connection = new Connection();
-        $sql = "SELECT * FROM login ORDER BY customer_id";
+        $sql = "SELECT * FROM login";
         $stmt = $connection->pdo->prepare($sql);
 //Thiết lập kiểu dữ liệu trả về
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
