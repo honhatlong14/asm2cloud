@@ -43,7 +43,7 @@ if (isset($_POST['signup'])) {
         echo('user has existed');
     } else {
         $sql = "INSERT INTO login(customer_id, user_name,password)"
-                . "VALUES('$customerid','$username','$passwordrepeat')";
+                . "VALUES($customerid,'$username','$passwordrepeat')";
         $stmt = $pdo->prepare($sql);
     }
 }
@@ -67,7 +67,7 @@ if (isset($_POST['signup'])) {
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
         $resultSet = $stmt->fetchAll();
-        echo '<p>Students information:</p>';
+        echo '<p>login user information:</p>';
         foreach ($resultSet as $row) {
             ?>
 
@@ -76,7 +76,6 @@ if (isset($_POST['signup'])) {
                 <td><?php echo $row['user_name'] ?></td>
                 <td><?php echo $row['password'] ?></td>
             </tr>
-
             <?php
         }
         ?>
