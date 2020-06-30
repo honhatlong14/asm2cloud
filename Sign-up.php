@@ -58,25 +58,26 @@ if (isset($_POST['signup'])) {
     <tbody>
         <?php
 // tạo vòng lặp
-        require_once'ConnecttoDB.php';
-        $connection = new Connection();
         $sql = "SELECT * FROM login";
         $stmt = $connection->pdo->prepare($sql);
 //Thiết lập kiểu dữ liệu trả về
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->execute();
-        $resultSet = $stmt->fetchAll();
-        echo '<p>login user information:</p>';
-        foreach ($resultSet as $row) {
-            ?>
 
-            <tr>
-                <td scope="row"><?php echo $row['customer_id'] ?></td>
-                <td><?php echo $row['user_name'] ?></td>
-                <td><?php echo $row['password'] ?></td>
-            </tr>
-            <?php
-        }
+        if ($stmt->execute() == true) {
+            echo ('success');
+            $resultSet = $stmt->fetchAll();
+            echo '<p>login user information:</p>';
+            foreach ($resultSet as $row) {
+                ?>
+
+                <tr>
+                    <td scope="row"><?php echo $row['customer_id'] ?></td>
+                    <td><?php echo $row['user_name'] ?></td>
+                    <td><?php echo $row['password'] ?></td>
+                </tr>
+                <?php
+            }
+        };
         ?>
     </tbody>
 </table>
