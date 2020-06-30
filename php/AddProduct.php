@@ -48,15 +48,13 @@
         <br><br><br>
 
         <?php
-        if (isset($_POST['submit'])) {
-            $fnm = $_FILES["image"]["name"];
-            $dst = "./img" . $fnm;
-            move_uploaded_file($_FILES["image"]["tmp_name"], $dst);
-        }
-        ?>
-        <?php
         require_once'ConnecttoDB.php';
         $connection = new Connection();
+        if (isset($_POST['submit'])) {
+            $fnm = $_FILES["image"]["name"];
+            $dst = "./img/" . $fnm;
+            move_uploaded_file($_FILES["image"]["tmp_name"], $dst);
+        }
         $sql = "INSERT INTO product(product_id,product_name,price,product_image,information)"
                 . " VALUES('$_POST[barcode]','$_POST[name]','$_POST[price]','$_POST[image]','$_POST[description]')";
         echo ($sql);
