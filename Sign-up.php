@@ -36,15 +36,19 @@ if (isset($_POST['signup'])) {
     $customerid = $_POST['userID'];
     $password = $_POST['password'];
     $passwordrepeat = $_POST['repeat-password'];
-    if (empty($username) || empty($customerid) || empty($password) || empty($passwordrepeat)) {
-        header("Location:../signup.php?error=emptyfield&username =" . $username);
-        exit();
-    } else if ($username == $sql['user_name']) {
-        echo('user has existed');
+    $sql = "INSERT INTO login(customer_id,user_name,password)"
+            . " VALUES($customerid,'$username','$passwordrepeat')";
+    echo ($sql);
+    $stmt = $connection->pdo->prepare($sql);
+//$stmt->execute();
+    if (is_null($_POST['userID'])) {
+        echo "ID must be not null";
     } else {
-        $sql = "INSERT INTO login(customer_id, user_name,password)"
-                . "VALUES($customerid,'$username','$passwordrepeat')";
-        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute() == TRUE) {
+            echo "Record inserted successfully.";
+        } else {
+            echo "Error inserting record: ";
+        }
     }
 }
 ?>
