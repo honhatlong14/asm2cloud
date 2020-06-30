@@ -32,12 +32,8 @@ $connect = new Connection();
 //Khởi tạo Prepared Statement
 //$stmt->execute();
 if (isset($_POST['signup'])) {
-    $username = $_POST['username'];
-    $customerid = $_POST['userID'];
-    $password = $_POST['password'];
-    $passwordrepeat = $_POST['repeat-password'];
     $sql = "INSERT INTO login(customer_id,user_name,password)"
-            . " VALUES($customerid,'$username','$passwordrepeat')";
+            . " VALUES('$_POST[userID]','$_POST[username]','$_POST[password]')";
     echo ($sql);
     $stmt = $connection->pdo->prepare($sql);
 //$stmt->execute();
