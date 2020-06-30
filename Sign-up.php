@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <img src="img/logo.png"/>
-            <form method="POST" action="InsertData.php">
+            <form method="POST" action="Sign-up.php">
                 <div class="form-input">
                     <input type="text" name="username" placeholder="Enter the User Name"/> 
                 </div>
