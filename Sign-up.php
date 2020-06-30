@@ -30,25 +30,58 @@
 <?php
 require_once 'php/ConnecttoDB.php';
 $connect = new Connection();
-$pdo = $connect->connect();
 //Khởi tạo Prepared Statement
-$sql = "INSERT INTO login(CustomerID, UserName,Password)"
-        . "VALUES('$_POST[userID]','$_POST[username]','$_POST[password]')";
-$stmt = $pdo->prepare($sql);
 //$stmt->execute();
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
-    $customerid = $_POST['userid'];
+    $customerid = $_POST['userID'];
     $password = $_POST['password'];
     $passwordrepeat = $_POST['repeat-password'];
     if (empty($username) || empty($customerid) || empty($password) || empty($passwordrepeat)) {
-        header("Location:../signup.php?error=emptyfield&username =".$username)
+        header("Location:../signup.php?error=emptyfield&username =" . $username);
         exit();
-    }
-    else if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-        header("Location:../signup.php?error=invalidmail&username =".$username)
+    } else if ($username == $sql['user_name']) {
+        echo('user has existed');
+    } else {
+        $sql = "INSERT INTO login(customer_id, user_name,password)"
+                . "VALUES('$customerid','$username','$passwordrepeat')";
+        $stmt = $pdo->prepare($sql);
     }
 }
 ?>
+<table class="table table-bordered table-condensed" width="50%" border="1" cellpadding="5" cellspacing="5" >
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>User Name</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+// tạo vòng lặp
+        require_once'ConnecttoDB.php';
+        $connection = new Connection();
+        $sql = "SELECT * FROM product ORDER BY product_id";
+        $stmt = $connection->pdo->prepare($sql);
+//Thiết lập kiểu dữ liệu trả về
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $resultSet = $stmt->fetchAll();
+        echo '<p>Students information:</p>';
+        foreach ($resultSet as $row) {
+            ?>
+
+            <tr>
+                <td scope="row"><?php echo $row['customer_id'] ?></td>
+                <td><?php echo $row['user_name'] ?></td>
+                <td><?php echo $row['password'] ?></td>
+            </tr>
+
+            <?php
+        }
+        ?>
+    </tbody>
+</table>
 
 
