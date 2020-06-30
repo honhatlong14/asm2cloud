@@ -28,7 +28,7 @@
 
 <?php
 require_once 'php/ConnecttoDB.php';
-$connect = new Connection();
+$connection = new Connection();
 //Khởi tạo Prepared Statement
 //$stmt->execute();
 if (isset($_POST['signup'])) {
@@ -62,14 +62,14 @@ if (isset($_POST['signup'])) {
         $stmt = $connection->pdo->prepare($sql);
 //Thiết lập kiểu dữ liệu trả về
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
+        $stmt->execute();
         if ($stmt->execute() == true) {
             echo ('success');
             $resultSet = $stmt->fetchAll();
+            echo $resultSet;
             echo '<p>login user information:</p>';
             foreach ($resultSet as $row) {
                 ?>
-
                 <tr>
                     <td scope="row"><?php echo $row['customer_id'] ?></td>
                     <td><?php echo $row['user_name'] ?></td>
