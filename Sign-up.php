@@ -34,7 +34,6 @@ $connect = new Connection();
 if (isset($_POST['signup'])) {
     $sql = "INSERT INTO login(customer_id,user_name,password)"
             . " VALUES('$_POST[userID]','$_POST[username]','$_POST[password]')";
-    echo ($sql);
     $stmt = $connection->pdo->prepare($sql);
 //$stmt->execute();
     if (is_null($_POST['userID'])) {
