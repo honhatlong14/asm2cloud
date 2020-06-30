@@ -19,14 +19,13 @@
                 <div class="form-input">
                     <input type="password" name="password" placeholder="password"/>
                 </div>
-                <div class="form-input">
-                    <input type="password" name="repeat-password" placeholder="Repeat password"/>
-                </div>
                 <input type="submit" value="SIGN-UP" class="btn-signup" name="signup"/>
             </form>
         </div>
     </body>
 </html>
+
+
 <?php
 require_once 'php/ConnecttoDB.php';
 $connect = new Connection();
@@ -62,7 +61,7 @@ if (isset($_POST['signup'])) {
 // tạo vòng lặp
         require_once'ConnecttoDB.php';
         $connection = new Connection();
-        $sql = "SELECT * FROM product ORDER BY product_id";
+        $sql = "SELECT * FROM login ORDER BY customer_id";
         $stmt = $connection->pdo->prepare($sql);
 //Thiết lập kiểu dữ liệu trả về
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
