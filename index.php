@@ -3,6 +3,10 @@
     <head>
         <!--conduct the website-->
         <meta charset="UTF-8">
+        <a href="ConnectToDB.php">Connect to database</a>
+        <a href="InsertData.php">Insert to database</a>
+        <a href="DeleteData.php">Delete in database</a>
+        <a href="UpdateData.php">Update database</a>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
         <title>Toyworld shopping cart</title>
